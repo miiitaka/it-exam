@@ -1,7 +1,7 @@
 "use strict";
 
 const MemoMax = 5;
-const Datamax = 25;
+const DataMax = 25;
 
 let
   Memo = [],
@@ -26,10 +26,6 @@ const addMemo = (textLen, text) => {
     Data[DataLen + i] = text[i];
   }
   DataLen = DataLen + textLen;
-  console.log(Memo);
-  console.log(MemoCnt);
-  console.log(Data);
-  console.log(DataLen);
 }
 
 const deleteMemo = (pos) => {
@@ -37,7 +33,7 @@ const deleteMemo = (pos) => {
 
   i = pos + 1;
   while (i < MemoCnt) {
-    Memo[i - i] = Memo[i];
+    Memo[i - 1] = Memo[i];
     i = i + 1;
   }
 }
@@ -80,6 +76,8 @@ document.getElementById("add").addEventListener("click", () => {
     addMemo(text.length, text);
   }
 });
-document.getElementById("delete").addEventListener("click", deleteMemo);
+document.getElementById("delete").addEventListener("click", () =>  {
+  deleteMemo(0);
+});
 document.getElementById("change").addEventListener("click", changeMemo);
 document.getElementById("move").addEventListener("click", moveMemo);
